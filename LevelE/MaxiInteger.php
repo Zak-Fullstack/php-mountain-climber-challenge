@@ -45,7 +45,37 @@ class MaxiInteger
      */
     private function realSum($a, $b)
     {
-        /** @TODO */
+        $number1 = $a->getReverse();
+        $number2 = $b->getReverse();
+        $addition = "";
+        $retenue = 0;
+
+        for ($i = 0; ; $i++) {
+            if ($number1 === "" && $number2 === "") {
+                if ($retenue > 0)
+                    $addition .= $retenue;
+                break;
+            }
+            else if ($number1 === "") {
+                $addition .= $number2[0] + $retenue;
+                $addition .= substr($number2, 1);
+                break;
+            }
+            else if ($number2 === "") {
+                $addition .= $number1[0] + $retenue;
+                $addition .= substr($number1, 1);
+                break;
+            }
+            else {
+                $tempAdd = $number1[0] + $number2[0] + $retenue;
+                $retenue = $tempAdd > 9 ? 1 : 0;
+                $addition .= $tempAdd % 10;
+                $number1 = substr($number1, 1);
+                $number2 = substr($number2, 1);
+            }
+        }
+
+        return new MaxiInteger(strrev($addition));;
     }
 
     private function setValue($value)
@@ -57,6 +87,11 @@ class MaxiInteger
     public function getValue()
     {
         return $this->value;
+    }
+
+    public function getReverse()
+    {
+        return $this->reverse;
     }
 
     private function getNthOfMaxiInteger($n)

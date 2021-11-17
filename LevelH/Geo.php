@@ -21,7 +21,9 @@ class Geo
         $cosDeg2RadLat1 = cos($deg2RadLat1);
 
         foreach ($cities as $dstCity) {
-            if ($dstCity['id'] === $srcCity['id']){
+            if ($dstCity['id'] === $srcCity['id']
+                || $dstCity['long'] > $srcCity['long'] + 1
+                || $dstCity['long'] < $srcCity['long'] - 1){
                 continue;
             }
 
@@ -42,6 +44,21 @@ class Geo
         return $closestCity;
 
     }
+
+    // function insertSort(&$a) {
+    //     $n = count($a);
+    //     for ($i = 0; $i < ($n - 1); $i++) {
+    //         $key = $i + 1;
+    //         $tmp = $a[$key];
+    //         for ($j = ($i + 1); $j > 0; $j--) {
+    //             if ($tmp['long'] < $a[$j - 1]['long']) {
+    //                 $a[$j] = $a[$j - 1];
+    //                 $key = $j - 1;
+    //             }
+    //         }
+    //         $a[$key] = $tmp;
+    //     }
+    // }
 
     /**
      * Give the distance in meter between two points (in kilometer)

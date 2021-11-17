@@ -79,6 +79,7 @@ if [ $LEVELM = 0 ]; then
         SCORE=$((SCORE+30));
 fi
 
+#done
 ./phpunit LevelN;
 LEVELN=$?;
 if [ $LEVELN = 0 ]; then

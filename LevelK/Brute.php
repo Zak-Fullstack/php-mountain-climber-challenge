@@ -21,7 +21,23 @@ class Brute
      */
     public function force()
     {
-
-        // @TODO
+        $a = "qwertyuiopasdfghjklzxcvbnm";
+        for ($i=0; $i < 26; $i++) {
+            # code...
+            for ($j=0; $j < 26; $j++) {
+                # code...
+                for ($k=0; $k < 26; $k++) {
+                    # code...
+                    for ($l=0; $l < 26; $l++) {
+                        $res = substr($a, $i,1).substr($a, $j,1).substr($a, $k,1).substr($a, $l,1);
+                        $h = $this->hash;
+                        if (md5($res) == $h || crc32($res) == $h || base64_encode($res) == $h || sha1($res) == $h) {
+                            $this->origin = $res;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

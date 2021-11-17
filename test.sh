@@ -68,6 +68,7 @@ if [ $LEVELJ = 0 ]; then
         SCORE=$((SCORE+180));
 fi
 
+#Done
 ./phpunit LevelK;
 LEVELK=$?;
 if [ $LEVELK = 0 ]; then

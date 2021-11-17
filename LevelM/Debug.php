@@ -39,7 +39,7 @@ class Debug
         );
 
         return array(
-            'return' => $array1 === $array2,
+            'return' => empty(array_diff_assoc($array1, $array2)),
             'cheat' => $array1['token'],
         );
     }
@@ -49,7 +49,7 @@ class Debug
     public function trueEqualsFalse()
     {
         $a = 0;
-        $b = 'x';
+        $b = '0 ';
 
         $testa = (false == $a) ? true : false;
         $testb = ($a == $b) ? true : false;
@@ -62,6 +62,9 @@ class Debug
      Uniquement des valeurs scalaires */
     public function increment($a)
     {
-        return ++$a;
+        $c = (string)$a;
+        $b = substr($c, -1);
+        $c = substr($c, 0, strlen($c) -1);
+        return $c.++$b;
     }
 }

@@ -45,8 +45,6 @@ class MaxiInteger
      */
     private function realSum($a, $b)
     {
-        print($a->getValue() . "\n");
-        print($b->getValue() . "\n");
         $number1 = $a->getReverse();
         $number2 = $b->getReverse();
         $addition = "";
@@ -56,19 +54,16 @@ class MaxiInteger
             if ($number1 === "" && $number2 === "") {
                 if ($retenue > 0)
                     $addition .= $retenue;
-                print("1 " . $addition . "\n\n");
                 break;
             }
             else if ($number1 === "") {
                 $addition .= $number2[0] + $retenue;
                 $addition .= substr($number2, 1);
-                print("2 " . $addition . "\n\n");
                 break;
             }
             else if ($number2 === "") {
                 $addition .= $number1[0] + $retenue;
                 $addition .= substr($number1, 1);
-                print("3 " . $addition . "\n\n");
                 break;
             }
             else {
